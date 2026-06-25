@@ -29,6 +29,8 @@ jobs:
 
       - name: Run unit tests
         run: pytest tests/ -v
+        env:
+          MLFLOW_TRACKING_URI: sqlite:///mlflow_test.db
 
 
   # ---------------------------------------------------------------------------
@@ -62,6 +64,8 @@ jobs:
 
       - name: Train model
         run: python src/train.py
+        env:
+          MLFLOW_TRACKING_URI: sqlite:///mlflow.db
 
       - name: Read metrics
         id: read_metrics
